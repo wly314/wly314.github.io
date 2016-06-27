@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>SKVoiceButton</title>
+
+</head>
+<body>
+<h2>SKVoiceButton</h2>
+
+<p><img src="https://raw.githubusercontent.com/wly314/SKVoiceButton/master/ReadMeImage/Simulator%20Screen%20Shot%202016%E5%B9%B45%E6%9C%8827%E6%97%A5%20%E4%B8%8B%E5%8D%884.23.02.png" title="播放按钮示例" alt="Alt text" /></p>
+
+<p>Voice 音频播放按钮，计时</p>
+
+<h2>SKVoicePlayButton</h2>
+
+<h3>使用方法</h3>
+
+<pre><code>SKVoicePlayButton *oVoicePlayButton = [[SKVoicePlayButton alloc] initWithFrame:CGRectMake(20, 100, 100, 40) handler:^(id obj, NSInteger currentTime) {
+
+    SKVoicePlayButton *voiceBtn = (SKVoicePlayButton *)obj;
+    if (!voiceBtn.skSelected) {
+
+        [voiceBtn playOfStartTime:currentTime complete:^(BOOL complete) {
+            if (complete) {
+
+                [_defaultPlayer play];
+            }
+        }];
+    }else {
+
+        [_defaultPlayer pause];
+    }
+}];
+oVoicePlayButton.backgroundColor = [UIColor clearColor];
+oVoicePlayButton.skVoiceTime = 91;
+[self.view addSubview:oVoicePlayButton];
+</code></pre>
+
+<h3>注意事项：在使用时候，页面销毁时候要主动销毁定时器：</h3>
+
+<p>/<em>* 停止计时，在外部需要主动停止定时器时调用(如页面销毁时候) </em>/
+- (void)stopTime;</p>
+
+<p>－－－－－－－－－－－</p>
+
+<h2>SKDownloadButton</h2>
+
+<h3>使用方法</h3>
+
+<pre><code>
+    /**
+     *  使用方法
+     */
+    SKDownloadButton *downLoadBtn = [[SKDownloadButton alloc] initWithVoiceTime:100 handler:^(id obj, NSInteger currentTime) {
+
+        SKDownloadButton *voiceBtn = (SKDownloadButton *)obj;
+
+        if (!voiceBtn.skSelected) {
+
+            /** 开始下载 加载下载动画 */
+            [voiceBtn downloadNow];
+
+            /** 下载回复mp3 **/
+            [self downloadMp3WithPath:mp3Path status:^(NSURL *path) {
+
+                /** 下载完成 取消下载动画 */
+                [voiceBtn downloadFinish];
+
+                if (path) {
+
+                    /** 停止其他播放 */
+                    if (_defaultPlayer) {
+
+                        [_defaultPlayer stop];
+                    }
+
+                    /** 播放Mp3 设置按钮动画 **/
+                    [_defaultPlayer play];
+
+                    /** 按钮播放动画 */
+                    [voiceBtn playOfStartTime:0 complete:^(BOOL complete) {
+                        /** 此处处理：当前按钮成功播放 停止其他按钮播放动画 */
+                    }];
+                }else {
+                    voiceBtn.skSelected = NO;
+                }
+            }];
+        }else {
+            /*再次点击 停止播放*/
+            if (_defaultPlayer) {
+
+                [_defaultPlayer stop];
+            }
+        }
+    }];
+    downLoadBtn.frame = CGRectMake(10, 300, 300, 40);
+    downLoadBtn.tag = 200001;
+    downLoadBtn.backgroundColor = [UIColor greenColor];
+    downLoadBtn.isCanPlay = YES;
+    [self.view addSubview:downLoadBtn];
+
+    downLoadBtn.isRight = 1;
+    downLoadBtn.playButtonBackgroundColor = [UIColor grayColor];
+</code></pre>
+
+<h3>注意事项：在使用时候，页面销毁时候要主动销毁定时器：</h3>
+
+<p>/<strong> 停止计时，在外部需要主动停止定时器时调用(如页面销毁时候) </strong>/</p>
+
+<pre><code>- (void)stopTime;
+</code></pre>
+
+<p>/<strong>
+ *  播放器的背景颜色：
+ *  如若需在外部设置则需要在isRight设置之后设置才生效 默认灰色
+ </strong>/</p>
+
+<pre><code> playButtonBackgroundColor//设置语音条颜色
+ backgroundColor           //设置播放器颜色
+</code></pre>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Pod制作公共库时遇到的问题 | 畅畅的烧烤店</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="to find a pod with name, author, summary, or descriptionmatching ‘SKMoviePlayer’```1234关于发布代码到CocoaPods(Trunk方式)上，就不多说了，可以看官方文档，看不懂的话网上有很多手把手教程。当时我用 pod trunk 注册账户的时候，由于选择的用户名和github.com上面的不一致，导致发布之后搜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pod制作公共库时遇到的问题">
+<meta property="og:url" content="http://wly314.github.io/2016/08/22/Pod制作公共库时遇到的问题/index.html">
+<meta property="og:site_name" content="畅畅的烧烤店">
+<meta property="og:description" content="to find a pod with name, author, summary, or descriptionmatching ‘SKMoviePlayer’```1234关于发布代码到CocoaPods(Trunk方式)上，就不多说了，可以看官方文档，看不懂的话网上有很多手把手教程。当时我用 pod trunk 注册账户的时候，由于选择的用户名和github.com上面的不一致，导致发布之后搜">
+<meta property="og:updated_time" content="2016-11-23T09:17:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pod制作公共库时遇到的问题">
+<meta name="twitter:description" content="to find a pod with name, author, summary, or descriptionmatching ‘SKMoviePlayer’```1234关于发布代码到CocoaPods(Trunk方式)上，就不多说了，可以看官方文档，看不懂的话网上有很多手把手教程。当时我用 pod trunk 注册账户的时候，由于选择的用户名和github.com上面的不一致，导致发布之后搜">
+  
+    <link rel="alternate" href="/atom.xml" title="畅畅的烧烤店" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">畅畅的烧烤店</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一个程序员的自强不息梦</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wly314.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Pod制作公共库时遇到的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/22/Pod制作公共库时遇到的问题/" class="article-date">
+  <time datetime="2016-08-22T04:00:00.000Z" itemprop="datePublished">2016-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Pod制作公共库时遇到的问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><figcaption><span>to find a pod with name, author, summary, or descriptionmatching ‘SKMoviePlayer’```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">关于发布代码到CocoaPods(Trunk方式)上，就不多说了，可以看官方文档，看不懂的话网上有很多手把手教程。</div><div class="line">当时我用 pod trunk 注册账户的时候，由于选择的用户名和github.com上面的不一致，导致发布之后搜索   SKMoviePlayer 库的时候一直出现文章开头的错误 ```（Unable to find a pod with name, author, summary, or descriptionmatching ‘SKMoviePlayer’）```。</div><div class="line">于是，我就把帐号和邮箱改成和github上面的帐号信息一致了。过程如下：</div><div class="line">### 首先执行了```pod trunk me``` 信息如下（与github上面的仓库帐号不一致）：</div></pre></td></tr></table></figure></h3><p>bogon:~ Leou$ pod trunk me</p>
+<ul>
+<li>Name:     Leou</li>
+<li>Email:    wly314sdx@qq.com</li>
+<li>Since:    August 19th, 03:20</li>
+<li>Pods:<ul>
+<li>SKMoviePlayer</li>
+</ul>
+</li>
+<li>Sessions:<ul>
+<li>August 19th, 03:20 - December 25th, 04:46. IP: 119.57.115.175 Description: MacBook<br>Pro</li>
+<li>August 21st, 20:34 - December 27th, 20:44. IP: 119.57.115.175<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">### 执行 ```pod trunk register --help``` 看看有什么能改本地信息的么：</div><div class="line">If you’ve already registered with trunk, you may omit the `NAME`</div><div class="line">(unless you would like to change it)。所以我们可以通过```$ pod trunk register eloy@example.com```命令更改账户，那么好，去注册一个与github用户名一样的账户。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>bogon:desktop Leou$ pod trunk register –help<br>Usage:</p>
+<pre><code>$ pod trunk register EMAIL [NAME]
+
+  Register a new account, or create a new session.
+
+  If this is your first registration, both an `EMAIL` address and your `NAME` are required. If you’ve already registered with trunk, you may omit the `NAME`
+</code></pre><p>(unless you would like to change it).</p>
+<pre><code>It is recommended that you provide a description of the session, so that it will be easier to identify later on. For instance, when you would like to clean-up
+</code></pre><p>your sessions. A common example is to specify the location where the machine,<br>that you are using the session for, is physically located.</p>
+<pre><code>Examples:
+
+    $ pod trunk register eloy@example.com &apos;Eloy Durán&apos; --description=&apos;Personal Laptop&apos;
+    $ pod trunk register eloy@example.com --description=&apos;Work Laptop&apos;
+    $ pod trunk register eloy@example.com
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">### 执行 ```pod trunk register eloy@example.com &apos;Eloy Durán&apos; --description=&apos;Personal Laptop&apos;```：</div></pre></td></tr></table></figure>
+<p>pod trunk register 783459987@qq.com ‘wly314’ –description=’MacBook Pro’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">成功之后，去邮箱验证，这一步是为了注册另一个账户，然后就可以切换到新建的账户上。</div><div class="line">之后就可以执行```pod trunk register 783459987@qq.com```重新建立本地会话，验证邮箱之后，执行```pod trunk me```信息如下：</div></pre></td></tr></table></figure></p>
+<p>bogon:desktop Leou$ pod trunk me</p>
+<ul>
+<li>Name:     wly314</li>
+<li>Email:    783459987@qq.com</li>
+<li>Since:    August 21st, 20:28</li>
+<li>Pods:<ul>
+<li>SKMoviePlayer</li>
+</ul>
+</li>
+<li>Sessions:<ul>
+<li>August 21st, 20:28 - December 27th, 20:34. IP: 119.57.115.175</li>
+<li>August 21st, 21:36 - December 27th, 21:36. IP: 119.57.115.175 Description: MacBook Pro<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">OK，问题解决到现在就快差不多了，本地已经没什么问题，现在更改仓库的 Owner。</div><div class="line">### 更改仓库 Owner: </div><div class="line">#### 看看现在仓库的Owner:目前属于```Leou```账户。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>bogon:SKMoviePlayer Leou$ pod trunk info SKMoviePlayer<br>SKMoviePlayer</p>
+<pre><code>- Versions:
+  - 0.0.2 (2016-08-19 09:27:39 UTC)
+  - 0.0.3 (2016-08-19 09:55:45 UTC)
+  - 0.0.4 (2016-08-19 10:46:17 UTC)
+  - 0.0.5 (2016-08-22 02:40:34 UTC)
+- Owners:
+  - Leou &lt;wly314sdx@qq.com&gt;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#### 添加一个账户:```+ add-owner      Add an owner to a pod```将新建的账户添加到pod库里。</div><div class="line">如下我们可以看到有两个账户了，然后可以删除```Leou```。</div></pre></td></tr></table></figure>
+<p>bogon:desktop Leou$ pod trunk add-owner SKMoviePlayer 783459987@qq.com</p>
+<ul>
+<li>Owners:<ul>
+<li>Leou <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#x77;&#108;&#x79;&#x33;&#x31;&#52;&#115;&#100;&#x78;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;">&#x77;&#108;&#x79;&#x33;&#x31;&#52;&#115;&#100;&#x78;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;</a></li>
+<li>wly314 <a href="&#109;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#x37;&#56;&#x33;&#x34;&#53;&#57;&#57;&#x38;&#x37;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#109;">&#x37;&#56;&#x33;&#x34;&#53;&#57;&#57;&#x38;&#x37;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#109;</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#### 删除```Leou```账户：```+ remove-owner   Remove an owner from a pod</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>如下我们可以看到<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">```</div><div class="line">bogon:desktop Leou$ pod trunk remove-owner SKMoviePlayer wly314sdx@qq.com</div><div class="line">  - Owners:</div><div class="line">    - wly314 &lt;783459987@qq.com&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="最后更新一下-SKMoviePlayer-文件："><a href="#最后更新一下-SKMoviePlayer-文件：" class="headerlink" title="最后更新一下 SKMoviePlayer 文件："></a>最后更新一下 SKMoviePlayer 文件：</h3><p>如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new do |s|</div><div class="line"></div><div class="line">  s.name         = &quot;SKMoviePlayer&quot;</div><div class="line">  s.version      = &quot;0.0.7&quot;</div><div class="line">  s.summary      = &quot;SKMoviePlayer一个在完善中的播放器－基于AVPlayer&quot;</div><div class="line"></div><div class="line">  s.description  = &lt;&lt;-DESC</div><div class="line">SKMoviePlayer一个在完善中的播放器－基于AVPlayer</div><div class="line">必须是addSubview添加播放器SKMoviePlayer。</div><div class="line">                   DESC</div><div class="line"></div><div class="line">  s.homepage     = &quot;https://wly314.github.io&quot;</div><div class="line">  s.license      = &quot;MIT&quot;</div><div class="line"></div><div class="line">  s.author             = &#123; &quot;wly314&quot; =&gt; &quot;783459987@qq.com&quot; &#125;</div><div class="line"></div><div class="line">  s.platform     = :ios, &quot;7.0&quot;</div><div class="line"></div><div class="line">  s.source       = &#123; :git =&gt; &quot;https://github.com/wly314/SKMoviePlayer.git&quot;, :tag =&gt; &quot;0.0.7&quot; &#125;</div><div class="line"></div><div class="line">  s.source_files  = &quot;SKMoviePlayer&quot;, &quot;*.&#123;h,m&#125;&quot;</div><div class="line">  s.resources    = &apos;SKMoviePlayer/SKImages/*.&#123;png,jpg&#125;&apos;</div><div class="line"></div><div class="line">  s.requires_arc = true</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>OK，现在问题已经解决。搜索一下库<code>pod search SKMoviePlayer</code>，可以看到，搜索已经成功。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wly314.github.io/2016/08/22/Pod制作公共库时遇到的问题/" data-id="civuqgikw0001knfygk0qy5m7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/13/Python学习开发过程的小愉快/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python学习开发过程的小愉快
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/11/App重构计划/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">App重构计划</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/23/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/13/Python学习开发过程的小愉快/">Python学习开发过程的小愉快</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/22/Pod制作公共库时遇到的问题/">Pod制作公共库时遇到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/11/App重构计划/">App重构计划</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/28/代码规范/">代码规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Leou<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

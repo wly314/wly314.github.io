@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="简单的是语言，深层地做研究，别让程序打败了自己。
-1. 第三方库管理CocoaPods 管理第三方库。第三方库以每个大的版本号为一次稳定版本，当前项目使用稳定版本，如果第三方库有大版本升级，则可以根据项目是否对第三方库进行升级。
-123例如：pod &apos;AFNetworking&apos;, &apos;~&amp;gt; 3.0&apos;，意思为项目当前使用的AFNetworking为4.0.0以下最新版本。如果AFNetworki">
+<meta name="description" content="参考： http://www.cnblogs.com/wayne23/p/3912882.html.
+OS X系统已经安装过Ruby了，因此我们只需执行以下命令：1sudo gem install -n /usr/local/bin cocoapods
+由于某些原因，执行时会出现下面的错误提示： 12ERROR:  Could not find a valid gem &amp;apos;cocoapod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="App重构计划">
-<meta property="og:url" content="http://wly314.github.io/2016/08/11/App重构计划/index.html">
+<meta property="og:title" content="CocoaPods">
+<meta property="og:url" content="http://wly314.github.io/2015/10/28/CocoaPods/index.html">
 <meta property="og:site_name" content="畅畅的烧烤店">
-<meta property="og:description" content="简单的是语言，深层地做研究，别让程序打败了自己。
-1. 第三方库管理CocoaPods 管理第三方库。第三方库以每个大的版本号为一次稳定版本，当前项目使用稳定版本，如果第三方库有大版本升级，则可以根据项目是否对第三方库进行升级。
-123例如：pod &apos;AFNetworking&apos;, &apos;~&amp;gt; 3.0&apos;，意思为项目当前使用的AFNetworking为4.0.0以下最新版本。如果AFNetworki">
-<meta property="og:updated_time" content="2016-11-23T09:18:16.000Z">
+<meta property="og:description" content="参考： http://www.cnblogs.com/wayne23/p/3912882.html.
+OS X系统已经安装过Ruby了，因此我们只需执行以下命令：1sudo gem install -n /usr/local/bin cocoapods
+由于某些原因，执行时会出现下面的错误提示： 12ERROR:  Could not find a valid gem &amp;apos;cocoapod">
+<meta property="og:updated_time" content="2016-11-24T04:21:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="App重构计划">
-<meta name="twitter:description" content="简单的是语言，深层地做研究，别让程序打败了自己。
-1. 第三方库管理CocoaPods 管理第三方库。第三方库以每个大的版本号为一次稳定版本，当前项目使用稳定版本，如果第三方库有大版本升级，则可以根据项目是否对第三方库进行升级。
-123例如：pod &apos;AFNetworking&apos;, &apos;~&amp;gt; 3.0&apos;，意思为项目当前使用的AFNetworking为4.0.0以下最新版本。如果AFNetworki">
+<meta name="twitter:title" content="CocoaPods">
+<meta name="twitter:description" content="参考： http://www.cnblogs.com/wayne23/p/3912882.html.
+OS X系统已经安装过Ruby了，因此我们只需执行以下命令：1sudo gem install -n /usr/local/bin cocoapods
+由于某些原因，执行时会出现下面的错误提示： 12ERROR:  Could not find a valid gem &amp;apos;cocoapod">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://wly314.github.io/2016/08/11/App重构计划/"/>
+  <link rel="canonical" href="http://wly314.github.io/2015/10/28/CocoaPods/"/>
 
 
 
 
 
-  <title> App重构计划 | 畅畅的烧烤店 </title>
+  <title> CocoaPods | 畅畅的烧烤店 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -234,7 +234,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wly314.github.io/2016/08/11/App重构计划/">
+  <link itemprop="mainEntityOfPage" href="http://wly314.github.io/2015/10/28/CocoaPods/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Leou">
@@ -258,7 +258,7 @@
             
             
               
-                App重构计划
+                CocoaPods
               
             
           </h1>
@@ -271,8 +271,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-11T14:30:00+08:00">
-                2016-08-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-10-28T11:50:00+08:00">
+                2015-10-28
               </time>
             
 
@@ -307,17 +307,13 @@
       
 
       
-        <p>简单的是语言，深层地做研究，别让程序打败了自己。</p>
-<h3 id="1-第三方库管理"><a href="#1-第三方库管理" class="headerlink" title="1. 第三方库管理"></a>1. 第三方库管理</h3><p>CocoaPods 管理第三方库。第三方库以每个大的版本号为一次稳定版本，当前项目使用稳定版本，如果第三方库有大版本升级，则可以根据项目是否对第三方库进行升级。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">例如：</div><div class="line">pod '<span class="type">AFNetworking'</span>, '~&gt; <span class="number">3.0</span>'，意思为项目当前使用的<span class="type">AFNetworking</span>为<span class="number">4.0</span>.<span class="number">0</span>以下最新版本。</div><div class="line">如果<span class="type">AFNetworking</span>升级到<span class="number">4.0</span>.<span class="number">0</span>，则根据自己的项目考虑是否升级，如果升级，只需要<span class="type">Podfile</span>更改为：pod '<span class="type">AFNetworking'</span>, '~&gt; <span class="number">4.0</span>'，然后执行 pod update 即可。</div></pre></td></tr></table></figure>
-<p>项目中使用以下第三库：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="type">AutoLayout</span>布局管理： 		<span class="type">Masonry</span>，本次使用版本<span class="number">2.0</span>以下版本。</div><div class="line">数据请求：				    <span class="type">AFNetworking</span>，本次使用版本<span class="number">2.0</span>以下版本。</div><div class="line">网络图片加载与缓存：		    <span class="type">SDWebImage</span>，本次使用版本<span class="number">2.0</span>以下版本。</div><div class="line">下拉刷新、上拉加载：		    <span class="type">MJRefresh</span>，本次使用版本<span class="number">2.0</span>以下版本。</div><div class="line">数据库：					    <span class="type">FMDB</span>，本次使用版本<span class="number">2.0</span>以下版本。</div><div class="line">网络加载指示器			    <span class="type">MBProgressHUD</span>，本次使用版本<span class="number">2.0</span>以下版本。</div></pre></td></tr></table></figure></p>
-<p>Podfile 如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">platform:ios, '<span class="number">7.0</span>'</div><div class="line"></div><div class="line">target <span class="string">"VKVickey_NCE"</span> <span class="keyword">do</span></div><div class="line"></div><div class="line">pod '<span class="type">Masonry'</span>, '~&gt; <span class="number">1.0</span>'</div><div class="line">pod '<span class="type">AFNetworking'</span>, '~&gt; <span class="number">3.0</span>'</div><div class="line">pod '<span class="type">SDWebImage'</span>, '~&gt; <span class="number">3.0</span>'</div><div class="line">pod '<span class="type">MJRefresh'</span>, '~&gt; <span class="number">3.0</span>'</div><div class="line">pod '<span class="type">FMDB'</span>, '~&gt; <span class="number">2.0</span>'</div><div class="line">pod '<span class="type">MBProgressHUD'</span>, '~&gt; <span class="number">1.0</span>'</div><div class="line"></div><div class="line">end</div></pre></td></tr></table></figure>
-<h3 id="2-代码规范"><a href="#2-代码规范" class="headerlink" title="2. 代码规范"></a>2. 代码规范</h3><p>代码规范参照以下标准：</p>
-<ul>
-<li><a href="http://leou.farbox.com/post/dai-ma-gui-fan-dai-wan-shan" target="_blank" rel="external">iOS开发代码规范 (待完善)</a></li>
-<li><a href="http://leou.farbox.com/post/zhong-gou-zhu-yi-shi-xiang" target="_blank" rel="external">iOS重构注意事项 (待完善)</a></li>
-</ul>
+        <p>参考：<br> <a href="http://www.cnblogs.com/wayne23/p/3912882.html" target="_blank" rel="external">http://www.cnblogs.com/wayne23/p/3912882.html</a>.</p>
+<p>OS X系统已经安装过Ruby了，因此我们只需执行以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install -n /usr/local/bin cocoapods</div></pre></td></tr></table></figure></p>
+<p>由于某些原因，执行时会出现下面的错误提示：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ERROR:  Could not find a valid gem &apos;cocoapods&apos; (&gt;= 0), here is why:</div><div class="line">         Unable to download data from https://rubygems.org/ - Errno::EPIPE: Broken pipe - SSL_connect (https://rubygems.org/latest_specs.4.8.gz)</div></pre></td></tr></table></figure></p>
+<p> 可以多试几次，或者使用淘宝的代理，执行以下命令。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ gem sources -l</div><div class="line">$ gem sources --remove https://rubygems.org/</div><div class="line">$ gem sources -a https://ruby.taobao.org/</div><div class="line">$ gem sources -l</div></pre></td></tr></table></figure></p>
+<p> 然后重新安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install -n /usr/local/bin cocoapods</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">安装成功后，接着执行命令：</div><div class="line">pod setup&lt;br&gt;</div><div class="line">如果Ruby环境不够新，可能需要更新以下：</div><div class="line">sudo gem update --system&lt;br&gt;</div><div class="line">至此安装就完成了，我们可以尝试搜索一个第三方类库：</div><div class="line">pod search AFNetworking&lt;br&gt;</div><div class="line">使用CocoaPods的第一步，是在当前项目下，新建一个Podfile文件：</div><div class="line">touch Podfile&lt;br&gt;</div><div class="line">然后利用vim打开Podfile文件编辑，加入你想要使用的类库，格式如下：</div><div class="line">platform :ios</div><div class="line">pod &apos;Reachability&apos;, &apos;3.1.0&apos;</div><div class="line"> </div><div class="line">platform:ios, &apos;6.0&apos;</div><div class="line">pod &apos;JSONKit&apos;,&apos;1.4&apos;</div><div class="line">pod &apos;AFNetworking&apos;, &apos;~&gt; 2.3.1&apos;&lt;br&gt;</div><div class="line">如果是拷贝的别人的项目，或是一个很久没打开过的项目，可能需要先执行一下：</div><div class="line">pod update&lt;br&gt;</div><div class="line">最后一步，执行命令：</div><div class="line">pod install&lt;br&gt;</div><div class="line">当终端出现类似下面的提示后，就代表成功了：</div><div class="line">[!] From now on use `Sample0814.xcworkspace`.&lt;br&gt;</div><div class="line">这个时候会看到项目文件夹下多了一个文件xxx.xcworkspace，以后要通过这个文件打开项目，老项目文件xxx.xcodeproj不再使用。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">P.s.1 上面的每一步都有可能出现问题，但大部分问题都是因为大局域网的原因，用一个网速稳定的境外VPN可破。</div><div class="line"> </div><div class="line">  </div><div class="line"> </div><div class="line">P.s.2 如果上面因为权限问题安装失败，必须每次都要删除</div><div class="line"> </div><div class="line">rm -rf /Users/loginnanme/Library/Caches/CocoaPods/</div><div class="line">因为这个缓存中会存下你的github的东西，造成每次都调用上次权限问题的缓存。</div><div class="line"> </div><div class="line">  </div><div class="line"> </div><div class="line">P.s.3 关于Podfile文件编辑时，第三方库版本号的各种写法：</div><div class="line"> </div><div class="line">复制代码</div><div class="line">pod ‘AFNetworking’      //不显式指定依赖库版本，表示每次都获取最新版本</div><div class="line">pod ‘AFNetworking’,  ‘2.0’     //只使用2.0版本</div><div class="line">pod ‘AFNetworking’, ‘&gt;2.0′     //使用高于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&gt;=2.0′     //使用大于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt;2.0′     //使用小于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt;=2.0′     //使用小于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0.1.2′     //使用大于等于0.1.2但小于0.2的版本，相当于&gt;=0.1.2并且&lt;0.2.0</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0.1′     //使用大于等于0.1但小于1.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0′     //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -344,8 +340,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/28/代码规范/" rel="next" title="代码规范">
-                <i class="fa fa-chevron-left"></i> 代码规范
+              <a href="/2015/08/05/iOS 从绘图开始：DrawRect&CoreText/" rel="next" title="iOS 从绘图开始：DrawRect&CoreText">
+                <i class="fa fa-chevron-left"></i> iOS 从绘图开始：DrawRect&CoreText
               </a>
             
           </div>
@@ -354,8 +350,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/22/Pod制作公共库时遇到的问题/" rel="prev" title="Pod制作公共库时遇到的问题">
-                Pod制作公共库时遇到的问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/05/获取图片像素信息/" rel="prev" title="获取图片像素信息">
+                获取图片像素信息 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -403,17 +399,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatars/avatar.png"
@@ -452,22 +439,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-第三方库管理"><span class="nav-number">1.</span> <span class="nav-text">1. 第三方库管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-代码规范"><span class="nav-number">2.</span> <span class="nav-text">2. 代码规范</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

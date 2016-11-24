@@ -1,0 +1,581 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879- (void)drawRect:(CGRect)rect &amp;#123;    // Drawing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS 从绘图开始：DrawRect&CoreText">
+<meta property="og:url" content="http://wly314.github.io/2015/08/05/iOS 从绘图开始：DrawRect&CoreText/index.html">
+<meta property="og:site_name" content="畅畅的烧烤店">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879- (void)drawRect:(CGRect)rect &amp;#123;    // Drawing">
+<meta property="og:image" content="http://wly314.github.io/uploads/images/051810215958613.png">
+<meta property="og:updated_time" content="2016-11-24T04:41:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS 从绘图开始：DrawRect&CoreText">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879- (void)drawRect:(CGRect)rect &amp;#123;    // Drawing">
+<meta name="twitter:image" content="http://wly314.github.io/uploads/images/051810215958613.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wly314.github.io/2015/08/05/iOS 从绘图开始：DrawRect&CoreText/"/>
+
+
+
+
+
+  <title> iOS 从绘图开始：DrawRect&CoreText | 畅畅的烧烤店 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">畅畅的烧烤店</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一个程序员的自强不息梦</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wly314.github.io/2015/08/05/iOS 从绘图开始：DrawRect&CoreText/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leou">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatars/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="畅畅的烧烤店">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="畅畅的烧烤店" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS 从绘图开始：DrawRect&CoreText
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-08-05T18:11:00+08:00">
+                2015-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">- (void)drawRect:(<span class="type">CGRect</span>)rect &#123;</div><div class="line">    <span class="comment">// Drawing code</span></div><div class="line">    </div><div class="line">    <span class="comment">//Quartz 2D绘画环境,一张画布</span></div><div class="line">    <span class="type">CGContextRef</span> context = <span class="type">UIGraphicsGetCurrentContext</span>();</div><div class="line"></div><div class="line">    <span class="comment">//边框圆  背景圆</span></div><div class="line">    <span class="type">CGContextSetRGBStrokeColor</span>(context,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1.0</span>);<span class="comment">//画笔线的颜色</span></div><div class="line">    <span class="type">CGContextSetLineWidth</span>(context, <span class="number">2.0</span>);<span class="comment">//线的宽度</span></div><div class="line">    <span class="comment">//void CGContextAddArc(CGContextRef c,CGFloat x, CGFloat y,CGFloat radius,CGFloat startAngle,CGFloat endAngle, int clockwise)1弧度＝180°/π （≈57.3°） 度＝弧度×180°/π 360°＝360×π/180 ＝2π 弧度</span></div><div class="line">    <span class="comment">// x,y为圆点坐标，radius半径，startAngle为开始的弧度，endAngle为 结束的弧度，clockwise 0为顺时针，1为逆时针。</span></div><div class="line">    <span class="type">CGContextAddArc</span>(context, <span class="number">120</span>, <span class="number">120</span>, <span class="number">100</span>, <span class="number">0</span>, <span class="number">2</span>*<span class="type">M_PI</span>, <span class="number">0</span>); <span class="comment">//添加一个圆</span></div><div class="line">    <span class="type">CGContextDrawPath</span>(context, kCGPathStroke); <span class="comment">//绘制路径</span></div><div class="line">    </div><div class="line">    <span class="comment">//所占比例圆弧</span></div><div class="line">    <span class="type">CGContextSetRGBStrokeColor</span>(context,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1.0</span>);<span class="comment">//画笔线的颜色</span></div><div class="line">    <span class="type">CGContextSetLineWidth</span>(context, <span class="number">3.0</span>);<span class="comment">//线的宽度</span></div><div class="line">    <span class="type">CGContextAddArc</span>(context, <span class="number">120</span>, <span class="number">120</span>, <span class="number">100</span>, -<span class="number">90</span> * <span class="type">M_PI</span>/<span class="number">180</span>, (endRadius-<span class="number">90</span>) * <span class="type">M_PI</span>/<span class="number">180</span>, <span class="number">0</span>); <span class="comment">//添加一个圆</span></div><div class="line">    <span class="type">CGContextDrawPath</span>(context, kCGPathStroke); <span class="comment">//绘制路径</span></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">//绘制字符串</span></div><div class="line">    <span class="keyword">if</span> ([[<span class="type">UIDevice</span> currentDevice] systemVersion].floatValue &gt;= <span class="number">7.0</span>) &#123;</div><div class="line">        </div><div class="line">        <span class="type">NSMutableAttributedString</span> *mabstring = [[<span class="type">NSMutableAttributedString</span> alloc]initWithString:drawText];</div><div class="line">        [mabstring beginEditing];</div><div class="line">        </div><div class="line">        <span class="comment">//对同一段字体进行多属性设置</span></div><div class="line">        <span class="type">NSMutableDictionary</span> *attributes = [<span class="type">NSMutableDictionary</span> dictionaryWithObject:(id)[<span class="type">UIColor</span> redColor].<span class="type">CGColor</span> forKey:(id)kCTForegroundColorAttributeName];<span class="comment">//红色字体</span></div><div class="line">        <span class="comment">//设置字体属性</span></div><div class="line">        <span class="type">CTFontRef</span> font = <span class="type">CTFontCreateWithName</span>(<span class="type">CFSTR</span>(<span class="string">"Georgia"</span>), <span class="number">14</span>, <span class="type">NULL</span>);</div><div class="line">        [attributes setObject:(id)(__bridge id)font forKey:(id)kCTFontAttributeName];<span class="comment">//下划线</span></div><div class="line">        [mabstring endEditing];<span class="comment">//结束编辑</span></div><div class="line">        [mabstring addAttributes:attributes range:<span class="type">NSMakeRange</span>(<span class="number">0</span>, mabstring.length)];</div><div class="line">        </div><div class="line">        <span class="comment">//开始绘制</span></div><div class="line">        <span class="type">CTFramesetterRef</span> framesetter = <span class="type">CTFramesetterCreateWithAttributedString</span>((<span class="type">CFAttributedStringRef</span>)mabstring);</div><div class="line">        <span class="type">CGMutablePathRef</span> <span class="type">Path</span> = <span class="type">CGPathCreateMutable</span>();</div><div class="line">        <span class="type">CGPathAddRect</span>(<span class="type">Path</span>, <span class="type">NULL</span> ,<span class="type">CGRectMake</span>(<span class="number">100</span> , -<span class="number">100</span> ,<span class="keyword">self</span>.bounds.size.width-<span class="number">10</span> , <span class="keyword">self</span>.bounds.size.height-<span class="number">10</span>));</div><div class="line">        <span class="type">CTFrameRef</span> frame = <span class="type">CTFramesetterCreateFrame</span>(framesetter, <span class="type">CFRangeMake</span>(<span class="number">0</span>, <span class="number">0</span>), <span class="type">Path</span>, <span class="type">NULL</span>);</div><div class="line">        </div><div class="line">        <span class="comment">//压栈，压入图形状态栈中.</span></div><div class="line">        <span class="type">CGContextSetTextMatrix</span>(context , <span class="type">CGAffineTransformIdentity</span>);</div><div class="line">        <span class="comment">//保存现在得上下文图形状态。</span></div><div class="line">        <span class="type">CGContextSaveGState</span>(context);</div><div class="line">        <span class="comment">//x，y轴方向移动</span></div><div class="line">        <span class="type">CGContextTranslateCTM</span>(context , <span class="number">0</span> ,<span class="keyword">self</span>.bounds.size.height);</div><div class="line">        <span class="comment">//缩放x，y轴方向缩放，代码中坐标系转换是沿x轴翻转180度</span></div><div class="line">        <span class="type">CGContextScaleCTM</span>(context, <span class="number">1.0</span> ,-<span class="number">1.0</span>);</div><div class="line">        <span class="type">CTFrameDraw</span>(frame,context);<span class="comment">//开始绘制大小</span></div><div class="line">        <span class="type">CGPathRelease</span>(<span class="type">Path</span>);<span class="comment">//开始绘制路径</span></div><div class="line">        <span class="type">CFRelease</span>(framesetter);</div><div class="line">    &#125;<span class="keyword">else</span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//表示开始绘制路径</span></div><div class="line">        <span class="type">CGContextBeginPath</span>(context);</div><div class="line">        <span class="comment">//设置文字大小</span></div><div class="line">        <span class="type">CGContextSelectFont</span>(context, <span class="string">"Helvetica"</span>, <span class="number">20</span>, kCGEncodingMacRoman);</div><div class="line">        <span class="type">CGContextSetTextDrawingMode</span>(context, kCGTextFill);</div><div class="line">        <span class="comment">// 设置文本颜色字符为白色</span></div><div class="line">        <span class="type">CGContextSetRGBFillColor</span>(context, <span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>); <span class="comment">//白色</span></div><div class="line">        <span class="type">CGContextSetTextMatrix</span>(context, <span class="type">CGAffineTransformMakeScale</span>(<span class="number">1.0</span>, -<span class="number">1.0</span>));</div><div class="line">        <span class="comment">//绘制文字</span></div><div class="line">        <span class="type">CGContextShowTextAtPoint</span>(context,<span class="number">20</span>, <span class="number">100</span>, [@<span class="string">"characterAttribute"</span> cStringUsingEncoding:[<span class="type">NSString</span> defaultCStringEncoding]],</div><div class="line">                                 @<span class="string">"characterAttribute"</span>.length);</div><div class="line">        <span class="type">CGContextStrokePath</span>(context);</div><div class="line">        <span class="comment">//表示结束绘制路径</span></div><div class="line">        <span class="type">CGContextClosePath</span>(context);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/////////////////////一些字体属性设置////////////////////////</span></div><div class="line">    <span class="comment">//        [mabstring addAttribute:(id)kCTFontAttributeName value:(__bridge id)font range:NSMakeRange(0, 4)];</span></div><div class="line">    <span class="comment">//        [attributes setObject:(id)[NSNumber numberWithInt:kCTUnderlineStyleDouble] forKey:(id)kCTUnderlineStyleAttributeName];//下划线</span></div><div class="line">    <span class="comment">//        [mabstring addAttributes:attributes range:NSMakeRange(0, 4)];//设置属性的文字范围</span></div><div class="line">    </div><div class="line">    <span class="comment">//设置斜体字</span></div><div class="line">    <span class="comment">//        CTFontRef font = CTFontCreateWithName((CFStringRef)[UIFont italicSystemFontOfSize:20].fontName, 14, NULL);</span></div><div class="line">    <span class="comment">//        [mabstring addAttribute:(id)kCTFontAttributeName value:(__bridge id)(font) range:NSMakeRange(0, 4)];</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面的代码，是在UIView上绘制一个圆形比例图和文字。</p>
+<p>下面是CoreText在Label上的使用。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="type">UILabel</span> *titleLabel = [[<span class="type">UILabel</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">60</span>, <span class="number">2</span>, sectionHeader.bounds.size.width-<span class="number">60</span>-<span class="number">15</span>-<span class="number">10</span>, <span class="number">56</span>)];</div><div class="line">titleLabel.font = [<span class="type">UIFont</span> systemFontOfSize:<span class="number">17</span>.0f];</div><div class="line">[sectionHeader addSubview:titleLabel];</div><div class="line"><span class="type">NSString</span> *titleStr = [<span class="type">NSString</span> stringWithFormat:@<span class="string">"你还有%ld未通过"</span>, courseCount];</div><div class="line"><span class="type">NSInteger</span> courseCount = [obligatoryCourseArray <span class="built_in">count</span>];</div><div class="line"></div><div class="line"> <span class="comment">// 设置标签文字</span></div><div class="line"> <span class="type">NSMutableAttributedString</span> *attrituteString = [[<span class="type">NSMutableAttributedString</span> alloc] initWithString:titleStr];</div><div class="line"><span class="comment">// 设置标签文字的属性</span></div><div class="line">[attrituteString setAttributes:@&#123;<span class="type">NSForegroundColorAttributeName</span> : [<span class="type">UIColor</span> redColor],   <span class="type">NSFontAttributeName</span> : [<span class="type">UIFont</span> systemFontOfSize:<span class="number">25</span>]&#125; range:<span class="type">NSMakeRange</span>(<span class="number">3</span>, [<span class="type">NSString</span> stringWithFormat:@<span class="string">"%ld"</span>, courseCount].length)];</div><div class="line"><span class="comment">// 显示在Label上</span></div><div class="line"> titleLabel.attributedText = attrituteString;</div></pre></td></tr></table></figure></p>
+<p>当然Label上绘制的Text的属性可以用上面的在UIView上绘制中的方法。</p>
+<p>再来看一个UIImageView的：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">        </div><div class="line">        <span class="type">UIImageView</span> *obligatoryImageView = [[<span class="type">UIImageView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">30</span>, tableView.bounds.size.width, ([<span class="type">UIScreen</span> mainScreen].bounds.size.height-<span class="number">20</span>-<span class="number">44</span>)/<span class="number">3</span>-<span class="number">30</span>*<span class="number">2</span>)];</div><div class="line">        [cell addSubview:obligatoryImageView];</div><div class="line">        obligatoryImageView.backgroundColor = [<span class="type">UIColor</span> whiteColor];</div><div class="line">        <span class="type">UIGraphicsBeginImageContext</span>(obligatoryImageView.bounds.size);</div><div class="line">        [obligatoryImageView.image drawInRect:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, obligatoryImageView.bounds.size.width, obligatoryImageView.bounds.size.height)];</div><div class="line">        <span class="type">CGContextSetLineCap</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), kCGLineCapRound);  <span class="comment">//边缘样式</span></div><div class="line">        <span class="type">CGContextSetLineWidth</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">0.2</span>);  <span class="comment">//线宽</span></div><div class="line">        <span class="type">CGContextSetAllowsAntialiasing</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="type">YES</span>);</div><div class="line">        <span class="type">CGContextSetRGBStrokeColor</span>(<span class="type">UIGraphicsGetCurrentContext</span>(),<span class="number">153</span>/<span class="number">255.0</span>,<span class="number">153</span>/<span class="number">255.0</span>,<span class="number">153</span>/<span class="number">255.0</span>,<span class="number">1.0</span>);  <span class="comment">//颜色</span></div><div class="line">        <span class="type">CGContextBeginPath</span>(<span class="type">UIGraphicsGetCurrentContext</span>());</div><div class="line">        <span class="type">CGContextMoveToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, <span class="number">5</span>);  <span class="comment">//起点坐标</span></div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="keyword">self</span>.view.bounds.size.width-<span class="number">35</span>, <span class="number">5</span>);<span class="comment">//终点坐标</span></div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="keyword">self</span>.view.bounds.size.width-<span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">5</span>));</div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">5</span>));</div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, <span class="number">5</span>);</div><div class="line">        </div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">5</span>)/<span class="number">5</span>+<span class="number">5</span>);</div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="keyword">self</span>.view.bounds.size.width-<span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">5</span>)/<span class="number">5</span>+<span class="number">5</span>);</div><div class="line">        </div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="keyword">self</span>.view.bounds.size.width-<span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">5</span>)/<span class="number">5</span>*<span class="number">2</span>+<span class="number">5</span>);</div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">10</span>)/<span class="number">5</span>*<span class="number">2</span>+<span class="number">5</span>);</div><div class="line">        </div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">10</span>)/<span class="number">5</span>*<span class="number">3</span>+<span class="number">5</span>);</div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="keyword">self</span>.view.bounds.size.width-<span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">10</span>)/<span class="number">5</span>*<span class="number">3</span>+<span class="number">5</span>);</div><div class="line">        </div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="keyword">self</span>.view.bounds.size.width-<span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">10</span>)/<span class="number">5</span>*<span class="number">4</span>+<span class="number">5</span>);</div><div class="line">        <span class="type">CGContextAddLineToPoint</span>(<span class="type">UIGraphicsGetCurrentContext</span>(), <span class="number">35</span>, (obligatoryImageView.bounds.size.height-<span class="number">10</span>)/<span class="number">5</span>*<span class="number">4</span>+<span class="number">5</span>);</div><div class="line">        </div><div class="line">        <span class="type">CGContextStrokePath</span>(<span class="type">UIGraphicsGetCurrentContext</span>());</div><div class="line">        obligatoryImageView.image=<span class="type">UIGraphicsGetImageFromCurrentImageContext</span>();</div><div class="line">        <span class="type">UIGraphicsEndImageContext</span>();</div><div class="line">        </div><div class="line">        <span class="type">NSArray</span> *obligatoryArray = [courseArray objectAtIndex:indexPath.row];</div><div class="line">        </div><div class="line">        <span class="type">UILabel</span> *titleLabel = [[<span class="type">UILabel</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, tableView.bounds.size.width, <span class="number">30</span>)];</div><div class="line">        titleLabel.textColor = [<span class="type">UIColor</span> murpTextLowColor];</div><div class="line">        titleLabel.textAlignment = <span class="type">NSTextAlignmentCenter</span>;</div><div class="line">        titleLabel.font = [<span class="type">UIFont</span> systemFontOfSize:<span class="number">15</span>.0f];</div><div class="line">        titleLabel.text = [[obligatoryArray objectAtIndex:<span class="number">0</span>] objectForKey:@<span class="string">"Extend2"</span>];</div><div class="line">        [cell addSubview:titleLabel];</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt;= <span class="number">5</span>; i ++) &#123;</div><div class="line">            </div><div class="line">            <span class="type">UILabel</span> *left1 = [[<span class="type">UILabel</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">0</span>, <span class="number">30</span>+(obligatoryImageView.bounds.size.height-<span class="number">10</span>)/<span class="number">5</span>*i, <span class="number">35</span>, <span class="number">10</span>)];</div><div class="line">            left1.textColor = [<span class="type">UIColor</span> murpTextLowColor];</div><div class="line">            left1.textAlignment = <span class="type">NSTextAlignmentRight</span>;</div><div class="line">            left1.font = [<span class="type">UIFont</span> systemFontOfSize:<span class="number">12</span>.0f];</div><div class="line">            left1.text = [<span class="type">NSString</span> stringWithFormat:@<span class="string">"%d%%"</span>, <span class="number">100</span>-<span class="number">20</span>*i];</div><div class="line">            [cell addSubview:left1];</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> (i &lt; obligatoryArray.<span class="built_in">count</span>-<span class="number">1</span>) &#123;</div><div class="line">                </div><div class="line">                <span class="type">UILabel</span> *down = [[<span class="type">UILabel</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">35</span>+(tableView.bounds.size.width-<span class="number">35</span>*<span class="number">2</span>)/<span class="number">5</span>*i, ([<span class="type">UIScreen</span> mainScreen].bounds.size.height-<span class="number">20</span>-<span class="number">44</span>)/<span class="number">3</span>-<span class="number">30</span>, (tableView.bounds.size.width-<span class="number">35</span>*<span class="number">2</span>)/<span class="number">5</span>, <span class="number">30</span>)];</div><div class="line">                down.textColor = [<span class="type">UIColor</span> murpTextLowColor];</div><div class="line">                down.textAlignment = <span class="type">NSTextAlignmentCenter</span>;</div><div class="line">                down.font = [<span class="type">UIFont</span> systemFontOfSize:<span class="number">12</span>.0f];</div><div class="line">                [cell addSubview:down];</div><div class="line">                down.text = [<span class="type">NSString</span> stringWithFormat:@<span class="string">"%@分"</span>,[[obligatoryArray objectAtIndex:i+<span class="number">1</span>] objectForKey:@<span class="string">"Extend1"</span>]];</div><div class="line">                </div><div class="line">                <span class="type">CGFloat</span> heights = [[[obligatoryArray objectAtIndex:i+<span class="number">1</span>] objectForKey:@<span class="string">"Extend3"</span>] floatValue]/<span class="number">100.0</span>*(obligatoryImageView.bounds.size.height-<span class="number">5</span>*<span class="number">2</span>);</div><div class="line">                <span class="type">UIImageView</span> *heightImageView = [[<span class="type">UIImageView</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">35</span>+(tableView.bounds.size.width-<span class="number">35</span>*<span class="number">2</span>)/<span class="number">5</span>*i+<span class="number">5</span>, (([<span class="type">UIScreen</span> mainScreen].bounds.size.height-<span class="number">20</span>-<span class="number">44</span>)/<span class="number">3</span>-<span class="number">30</span>-<span class="number">5</span>)-heights, (tableView.bounds.size.width-<span class="number">35</span>*<span class="number">2</span>)/<span class="number">5</span>-<span class="number">10</span>, heights)];</div><div class="line">                heightImageView.backgroundColor = [<span class="type">UIColor</span> murpThemeGreenColor];</div><div class="line">                [cell addSubview:heightImageView];</div><div class="line">                </div><div class="line">                <span class="type">UILabel</span> *heightsLabel = [[<span class="type">UILabel</span> alloc] initWithFrame:<span class="type">CGRectMake</span>(<span class="number">35</span>+(tableView.bounds.size.width-<span class="number">35</span>*<span class="number">2</span>)/<span class="number">5</span>*i+<span class="number">5</span>, (([<span class="type">UIScreen</span> mainScreen].bounds.size.height-<span class="number">20</span>-<span class="number">44</span>)/<span class="number">3</span>-<span class="number">30</span>-<span class="number">5</span>)-heights-<span class="number">20</span>, (tableView.bounds.size.width-<span class="number">35</span>*<span class="number">2</span>)/<span class="number">5</span>-<span class="number">10</span>, <span class="number">20</span>)];</div><div class="line">                heightsLabel.textColor = [<span class="type">UIColor</span> murpTextLowColor];</div><div class="line">                heightsLabel.textAlignment = <span class="type">NSTextAlignmentCenter</span>;</div><div class="line">                heightsLabel.font = [<span class="type">UIFont</span> systemFontOfSize:<span class="number">10</span>.0f];</div><div class="line">                [cell addSubview:heightsLabel];</div><div class="line">                heightsLabel.text = [[obligatoryArray objectAtIndex:i+<span class="number">1</span>] objectForKey:@<span class="string">"Extend2"</span>];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>看一眼效果图:<br><img src="http://wly314.github.io/uploads/images/051810215958613.png" alt="图"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/07/iOS设置导航与其标题的颜色及字体大小和系统默认TabBar的相关设置与使用方法/" rel="next" title="iOS设置导航与其标题的颜色及字体大小和系统默认TabBar的相关设置与使用方法">
+                <i class="fa fa-chevron-left"></i> iOS设置导航与其标题的颜色及字体大小和系统默认TabBar的相关设置与使用方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/28/CocoaPods/" rel="prev" title="CocoaPods">
+                CocoaPods <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatars/avatar.png"
+               alt="Leou" />
+          <p class="site-author-name" itemprop="name">Leou</p>
+          <p class="site-description motion-element" itemprop="description">iOS开发笔记，Python历程，微信公众号玩出花样</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Leou</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
